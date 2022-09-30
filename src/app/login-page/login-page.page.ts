@@ -23,7 +23,7 @@ export class LoginPagePage implements OnInit {
   }
   login(){
     if(this.loginForm.valid){
-      this.router.navigate(['/home'])
+      this.router.navigate(['/items'])
 
     }
 

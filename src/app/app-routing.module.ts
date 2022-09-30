@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./login-page/login-page.module').then(m=> m.LoginPagePageModule)
   },
   {
+    path: 'items',
+    loadChildren: () => import('./list/list-routing.module').then(m=> m.ListPageRoutingModule)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
@@ -18,6 +22,10 @@ const routes: Routes = [
   {
     path: 'login-page',
     loadChildren: () => import('./login-page/login-page.module').then( m => m.LoginPagePageModule)
+  },
+  {
+    path: 'list',
+    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
   },
 ];
 
