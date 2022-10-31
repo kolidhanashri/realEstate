@@ -12,7 +12,15 @@ const routes: Routes = [
   },
   {
     path: 'items',
-    loadChildren: () => import('./list/list-routing.module').then(m=> m.ListPageRoutingModule)
+    loadChildren: () => import('./list/list.module').then(m=> m.ListPageModule)
+  },
+  {
+    path: 'properties',
+    loadChildren: () => import('./properties-list/properties-list.module').then(m=> m.PropertiesListPageModule)
+  },
+  {
+    path: 'create-property',
+    loadChildren: () => import('./create-property/create-property.module').then(m=> m.CreatePropertyPageModule)
   },
   {
     path: '',
@@ -24,9 +32,10 @@ const routes: Routes = [
     loadChildren: () => import('./login-page/login-page.module').then( m => m.LoginPagePageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+    path: 'create-property',
+    loadChildren: () => import('./create-property/create-property.module').then( m => m.CreatePropertyPageModule)
   },
+
 ];
 
 @NgModule({

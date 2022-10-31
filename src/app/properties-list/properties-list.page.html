@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Properties</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-button class="newProperty" (click)="newProperty()">New Property</ion-button>
+
+<ion-content>
+
+  <ion-list lines="full" *ngIf="propertiesList.length > 0">
+    <ion-item class="item-label item ios in-list ion-focusable hydrated" *ngFor="let property of propertiesList; let i = index;">
+      <ion-avatar slot="start" class="ios hydrated">
+        <img [src]="property?.photos.length ? property.photos[0]?.url : defaultUrl" />
+      </ion-avatar>
+      <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+        <h2>{{property.name}}</h2>
+        <h3>{{property.address}}</h3>
+        <p>{{property.city}} {{property.city ? ',' : ' '}} {{property.state}} {{property.state ? ',' : ' '}} {{property.country}}
+          {{property.country ? ',' : ' '}} {{property.code}}</p>
+      </ion-label>
+      <ion-icon name="create" slot="end" (click)="edit(i)" lable="Edit"></ion-icon>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-card *ngIf="propertiesList.length == 0">
+    <h4>No properties to show</h4>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>New Property</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-card>
+
+    <form [formGroup]="createPropertyForm"> 
+
+      <ion-item>
+        <ion-label position="floating">Name <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Latitude <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="latitude"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Longitude <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="longitude"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Address <ion-text color="danger">*</ion-text></ion-label>
+        <ion-textarea formControlName="address"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">City <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="city"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">State <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="state"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Country <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="country"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Tenant Limit <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="tenant_limit"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Code <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="code"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description <ion-text color="danger">*</ion-text></ion-label>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Owner <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="owner"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Tenants <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="tenants"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked" style="display: flex; font-size: 17px;">Photos <ion-text color="danger">*</ion-text>
+          <ion-icon name="attach" slot="end" (click)="file.click()" style="font-size: 25px; padding: 0px 10px;"></ion-icon>
+        </ion-label>
+
+        <input type="file" formControlName="photos" accept="image/*" #file multiple="multiple"
+        (change)="uploadPhoto($event)" hidden>
+        <p *ngIf="photos.length > 0"></p>
+        <p class="photosNames" *ngFor="let photo of photos">
+          <img src="{{photo.url}}">
+          <span style="margin:0px 15px">{{photo.name}}</span>
+        </p>
+      </ion-item>
+    </form>
+    <ion-button (click)="create()" [disabled]="createPropertyForm.invalid"> {{propertyId ? 'Edit' : 'Create'}}</ion-button>
+
+  </ion-card>
+
+
+</ion-content>
