@@ -63,6 +63,8 @@ export class CreatePropertyPage implements OnInit {
         owner:property.owner,
         tenants:property.tenants,
       })
+      this.createPropertyForm.controls.photos.setValidators(null);
+      this.createPropertyForm.controls.photos.updateValueAndValidity();
 
     }
   }
@@ -102,7 +104,12 @@ export class CreatePropertyPage implements OnInit {
       this.propertiesService.addProperty(postData)
     }
 
-    this.router.navigateByUrl('/properties');
+    if(this.propertiesService.isFromServiceRequest){
+      this.propertiesService.isFromServiceRequest=false;
+      this.router.navigate(['/create-service-request'])
+    }else{
+      this.router.navigateByUrl('/properties');
+    }
 
     this.createPropertyForm.reset();
     this.photos=[];

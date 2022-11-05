@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>User Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-card *ngIf="isAddUserProfile">
+
+    <form [formGroup]="addUserForm">
+
+      <ion-list>
+        <ion-icon class="propertyInput" name="add" slot="end" (click)="createUser()"></ion-icon>
+
+        <ion-item >
+
+          <ion-select interface="popover" placeholder="User" formControlName="user"><ion-text color="danger">*</ion-text>
+            <ion-select-option [value]="user" *ngFor="let user of usersList">{{user.username}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Display Name <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="displayName"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="stacked" style="display: flex; font-size: 17px;">Profile Picture <ion-text color="danger">*</ion-text>
+          <ion-icon name="attach" slot="end" (click)="file.click()" style="font-size: 25px; padding: 0px 10px;"></ion-icon>
+        </ion-label>
+
+        <input type="file" formControlName="profilePicture" accept="image/*" #file 
+        (change)="uploadPhoto($event)" hidden>
+        <p class="photosNames" *ngIf="profilePicture">
+          <img src="{{profilePicture?.url}}">
+          <span style="margin:0px 15px">{{profilePicture?.name}}</span>
+        </p>
+      </ion-item>
+    </form>
+    <ion-button (click)="addUser()" [disabled]="addUserForm.invalid"> {{userId ? 'Edit' :'Create'}} </ion-button>
+
+  </ion-card>
+
+  <ion-card *ngIf="!isAddUserProfile">
+
+    <form [formGroup]="userProfileForm">
+
+      <ion-item>
+        <ion-label position="floating">User Name <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input type="password" formControlName="password" maxLength="15"></ion-input>
+      </ion-item>
+      <p>Your password must contain at least 8 characters.</p>
+      <p>Your password can’t be a commonly used password.</p>
+      <p>Your password must contain alphabets and numbers.</p>
+
+      <ion-item>
+        <ion-label position="floating">Confirm Password <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input type="password" formControlName="confirmpassword" maxLength="15"></ion-input>
+      </ion-item>
+      <ion-text color="danger" class="mismatchPassword" *ngIf="isPasswordMisMatch">Confirm Password is not same as Password</ion-text>
+    </form>
+    <ion-button (click)="create()" [disabled]="userProfileForm.invalid"> Create </ion-button>
+
+  </ion-card>
+
+</ion-content>

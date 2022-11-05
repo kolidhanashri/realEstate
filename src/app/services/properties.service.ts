@@ -9,6 +9,10 @@ export class PropertiesService {
 
   path=environment.apiURL;
   propertiesList:any=[];
+  serviceRequestList:any=[];
+  usersList:any=[];
+  activeUsersList:any=[];
+  isFromServiceRequest:boolean=false;
   constructor(
     private http: HttpClient
   ) { 
@@ -32,5 +36,29 @@ export class PropertiesService {
 
   getPropertyList(){
     return this.propertiesList;
+  }
+
+
+  addServiceRequest(serviceRequest){
+    this.serviceRequestList.push(serviceRequest)
+  }
+
+  getServiceRequestList(){
+    return this.serviceRequestList;
+  }
+
+  createUserProfile(userProfile){
+    this.usersList.push(userProfile)
+  }
+
+  getUsersList(){
+    return this.usersList;
+  }
+
+  getActiveUsersList(){
+    return this.activeUsersList;
+  }
+  addActiveUser(activeUser){
+    this.activeUsersList.push(activeUser);
   }
 }

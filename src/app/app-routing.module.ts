@@ -34,7 +34,23 @@ const routes: Routes = [
   {
     path: 'create-property',
     loadChildren: () => import('./create-property/create-property.module').then( m => m.CreatePropertyPageModule)
+  },  {
+    path: 'service-list',
+    loadChildren: () => import('./service-list/service-list.module').then( m => m.ServiceListPageModule)
   },
+  {
+    path: 'create-service-request',
+    loadChildren: () => import('./create-service-request/create-service-request.module').then( m => m.CreateServiceRequestPageModule)
+  },
+  {
+    path: 'users-list',
+    loadChildren: () => import('./users-list/users-list.module').then( m => m.UsersListPageModule)
+  },
+  {
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },
+
 
 ];
 

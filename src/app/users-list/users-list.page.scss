@@ -1,0 +1,21 @@
+.item-img{
+    border-radius:40px;
+}
+
+.newProperty{
+    width:37%;
+    margin-left: 60%;
+}
+
+
+@media(min-width:767.1px){
+    .newProperty{
+        width:10%;
+        margin-left: 88%;
+    }
+}
+
+ion-card{
+    margin: 10% 25%;
+    padding: 3% 18%;
+}
